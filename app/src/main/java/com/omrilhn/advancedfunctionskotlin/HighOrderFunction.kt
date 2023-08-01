@@ -1,5 +1,7 @@
 package com.omrilhn.advancedfunctionskotlin
 
+import android.content.Intent
+
 fun main()
 {
     val myNumList = listOf<Int>(1,3,5,7,9)
@@ -37,6 +39,27 @@ fun main()
     {
         println(element)
     }
+    // !!!!!!!*****!!!!!!!
+    events.filter{it.hour > 19}.also {//do filter and print in just one code block
+        for(event in it){
+            println(event.name)
+        }
+    }
+    //APPLY
+    val intentWithApply = Intent().apply{//Create Intent and apply changes with one code block
+        putExtra(",","")
+        putExtra("","")
+        `package` = ""
+        action  = ""
+    }
+    //WITH
+    val withEvent = Event("Du","Concert",19)
 
+    with(withEvent){
+        this.name = "Duman"
+        this.concept = "Rock"
+        this.hour = 21
+    }
+    println(withEvent.name)
 }
-data class Event(val name:String,val concept:String,val hour:Int)
+data class Event(var name:String, var concept:String, var hour:Int)
